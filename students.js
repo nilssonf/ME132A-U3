@@ -1,21 +1,21 @@
 'use strict'
 
-let input = document.getElementById('students-search');
+let inputStudent = document.getElementById('students-search');
 
 function findStudent () {
   let student = DATABASE.students
-    .filter(student => student.lastName.toLowerCase().includes(input.value))
-    .map(student => student.firstName + ' ' + student.lastName);
+    .filter(student => student.lastName.toLowerCase().includes(inputStudent.value))
+    .map(student => student.firstName + ' ' + student.lastName + " (total: " + "x" + " credits)");
 
   return student;
 }
 
-input.addEventListener('keyup', function () {
+inputStudent.addEventListener('keyup', function () {
   let foundStudent = findStudent();
   document.getElementById("results").innerHTML = "";
   createHTML(foundStudent);
 
-  if (input.value == ""){
+  if (inputStudent.value == ""){
     document.getElementById("results").innerHTML = "";
   }
 });
