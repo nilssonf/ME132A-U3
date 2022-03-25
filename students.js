@@ -20,12 +20,7 @@ function findStudent () {
   return student;
 }
 
-// function totalCredits (){
-//     let sum = 
-
-//     return sum; 
-// }
-
+// eventlyssnare för när användaren söker i input-fältet
 inputStudent.addEventListener('keyup', function () {
   let foundStudent = findStudent();
   document.getElementById("results").innerHTML = "";
@@ -37,10 +32,14 @@ inputStudent.addEventListener('keyup', function () {
 });
 
 function renderStudent (student) {
+
+    let studentCourse = getStudentCourses(student);
+    let totalCredits = studentCourse.reduce(function(a, b){return a + b}, 0);
+
     let results = document.getElementById("results");
     let div = document.createElement("div");
 
-    div.innerText = student.firstName + " " + student.lastName;
+    div.innerText = student.firstName + " " + student.lastName + " (total credits: " + totalCredits + ")";
     results.appendChild(div);
 
     let foundCourses = getCourseById(student);
@@ -50,8 +49,12 @@ function renderStudent (student) {
         let courseDiv = document.createElement("div");
         
         div.appendChild(courseDiv);
-        courseDiv.innerText = foundCourses[i].title + ": " + student.courses[i].passedCredits + " of " + foundCourses[i].totalCredits + " credits";
+        courseDiv.innerText = foundCourses[i].title + ": " + student.courses[i].started.semester + " " + student.courses[i].started.year + " / " 
+        + student.courses[i].passedCredits + " of " + foundCourses[i].totalCredits + " credits";
         
+        if (foundCourses[i].totalCredits == student.courses[i].passedCredits){
+            courseDiv.style.backgroundColor = "blue";
+        }
     }
     
 }
@@ -75,16 +78,16 @@ function getCourseById(student) {
     return foundCourses;
 }
 
-// function getStudentCourses (student) {
+function getStudentCourses (student) {
     
-//     let studentCourses = [];
+    let studentCourses = [];
 
-//     for (let studentCourse of student.courses) {
-//         for (let dbCourse of DATABASE.courses) {
-//             if (studentCourse.courseId == dbCourse.courseId) {
-//                 studentCourses.push(studentCourse.passedCredits);
-//             }
-//         }
-//     }
-//     return studentCourses;
-// }
+    for (let studentCourse of student.courses) {
+        for (let dbCourse of DATABASE.courses) {
+            if (studentCourse.courseId == dbCourse.courseId) {
+                studentCourses.push(studentCourse.passedCredits);
+            }
+        }
+    }
+    return studentCourses;
+}
