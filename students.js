@@ -8,10 +8,10 @@ function findStudent () {
 
     // För att få studenterna i bokstavsordning på förnamn
     student.sort(function (a, b) {
-        if (a.firstName > b.firstName) {
+        if (a.lastName > b.lastName) {
             return 1;
         } 
-        if (a.firstName < b.firstName) {
+        if (a.lastName < b.lastName) {
             return -1;
         }
         return 0; 
