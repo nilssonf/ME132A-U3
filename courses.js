@@ -55,7 +55,7 @@ function renderCourse (course) {
         div.appendChild(studentDiv);
         studentDiv.innerText = foundStudents[i].firstName + " " + foundStudents[i].lastName + " (" + passedCredits[i] +" credits)"; 
         
-        if (foundStudents[i].passedCredits == course.totalCredits){
+        if (passedCredits[i] == course.totalCredits){
             studentDiv.style.backgroundColor = "blue";
         }
     }
