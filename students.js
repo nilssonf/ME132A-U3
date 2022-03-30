@@ -96,9 +96,10 @@ function getStudentCourses (student) {
 }
 
 // dark mode
-function darkMode(){
-    let darkClick = document.getElementById("wrapper");
-    darkClick.classList.toggle("dark-mode");
-}
 
-darkMode();
+const themeSwitch = document.querySelector('input');
+
+themeSwitch.addEventListener('change', () => {
+    let wrapper = document.getElementById("wrapper");
+    wrapper.classList.toggle('dark-theme');
+});
