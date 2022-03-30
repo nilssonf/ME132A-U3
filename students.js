@@ -97,7 +97,7 @@ function getStudentCourses (student) {
 
 // dark mode
 
-const themeSwitch = document.querySelector('input');
+let themeSwitch = document.querySelector('input');
 
 themeSwitch.addEventListener('change', () => {
     let wrapper = document.getElementById("wrapper");
