@@ -32,24 +32,27 @@ inputStudent.addEventListener('keyup', function () {
 });
 
 function renderStudent (student) {
+    let results = document.getElementById("results");
+    let div = document.createElement("div");
+    let studentName = document.createElement("h2");
+    div.classList.add("studentContainer");
 
     let studentCourse = getStudentCourses(student);
     let totalCredits = studentCourse.reduce(function(a, b){return a + b}, 0);
 
-    let results = document.getElementById("results");
-    let div = document.createElement("div");
-
-    div.innerText = student.firstName + " " + student.lastName + " (total credits: " + totalCredits + ")";
+    studentName.innerText = student.firstName + " " + student.lastName + " (total credits: " + totalCredits + ")";
+    results.appendChild(studentName);
     results.appendChild(div);
 
     let foundCourses = getCourseById(student);
-    
+
 
     for (let i = 0; i < foundCourses.length; i ++){
         let courseDiv = document.createElement("div");
-        
+        courseDiv.classList.add("courseDiv");
+
         div.appendChild(courseDiv);
-        courseDiv.innerText = foundCourses[i].title + ": " + student.courses[i].started.semester + " " + student.courses[i].started.year + " / " 
+        courseDiv.innerText = foundCourses[i].title + "\n" + student.courses[i].started.semester + " " + student.courses[i].started.year + " / " 
         + student.courses[i].passedCredits + " of " + foundCourses[i].totalCredits + " credits";
         
         if (foundCourses[i].totalCredits == student.courses[i].passedCredits){
@@ -91,3 +94,11 @@ function getStudentCourses (student) {
     }
     return studentCourses;
 }
+
+// dark mode
+function darkMode(){
+    let darkClick = document.getElementById("wrapper");
+    darkClick.classList.toggle("dark-mode");
+}
+
+darkMode();

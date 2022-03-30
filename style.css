@@ -3,6 +3,8 @@ body {
     height: 100vh;
 
     font-family: 'Inconsolata', monospace;
+
+    overflow: hidden;
 }
 
 #wrapper {
@@ -15,6 +17,8 @@ body {
 
     height: 100vh;
     padding: 10px;
+
+    overflow-y: scroll;
 }
 
 #search-bar {
@@ -31,4 +35,48 @@ body {
 
     padding: 10px;
     margin: 5px;
+}
+
+.studentContainer {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    
+}
+
+.responsibleDiv {
+    padding: 10px;
+    margin: 5px;
+    height: 60px;
+    background-color: rgb(70, 167, 70);
+    border-radius: 20px;
+    border: solid 2px tomato;
+}
+
+.studentDiv {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 20px;
+    border: tomato solid 2px;
+    height: fit-content;
+}
+
+.courseDiv {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 20px;
+    border: tomato solid 2px;
+}
+
+.teacherDiv {
+    padding: 10px;
+    margin: 5px;
+    background-color: rgb(255, 99, 71);
+    border-radius: 20px;
+    border: solid 2px tomato;
+}
+
+.dark-mode{
+    background-color: rgb(68, 43, 47);
+    border: solid 3px rgb(70, 27, 19);
+
 }
