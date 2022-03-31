@@ -2,6 +2,7 @@
 
 let inputCourse = document.getElementById('courses-search');
 
+// hitta courserna och sortera dessa i alfabetisk ordning
 function findCourse () {
   let course = DATABASE.courses
     .filter((course) => course.title.toLowerCase().includes(inputCourse.value));
@@ -18,6 +19,7 @@ function findCourse () {
     return course; 
 }
 
+// eventlyssnare för sökfältet
 inputCourse.addEventListener("keyup", function(){
     let foundCourse = findCourse ();
     document.getElementById("results").innerHTML = "";
@@ -28,6 +30,7 @@ inputCourse.addEventListener("keyup", function(){
     }
 });
 
+// visa kursen med dess rätta innehåll i resultat-diven
 function renderCourse (course) {
     let results = document.getElementById("results");
     let div = document.createElement("div");
@@ -88,6 +91,8 @@ function renderCourse (course) {
         teacherP.innerText =  allTeachers[i].firstName + " " + allTeachers[i].lastName + " (" + allTeachers[i].post + ")";
     }
 }
+
+// Loopar igenom kurserna och adderar HTML
 
 function createHTML (courses) {
     for (let course of courses){

@@ -2,6 +2,7 @@
 
 let inputStudent = document.getElementById('students-search');
 
+// hitta rätt student
 function findStudent () {
   let student = DATABASE.students
     .filter((student) => student.lastName.toLowerCase().includes(inputStudent.value.toLowerCase()));
@@ -31,6 +32,7 @@ inputStudent.addEventListener('keyup', function () {
   }
 });
 
+// visa rätt student med rätt innehåll i resultat-diven
 function renderStudent (student) {
     let results = document.getElementById("results");
     let div = document.createElement("div");
@@ -70,6 +72,7 @@ function createHTML (students) {
     }
 }
 
+// hitta rätt kurs baserat på dess id
 function getCourseById(student) {
     let foundCourses = [];
 
@@ -81,6 +84,7 @@ function getCourseById(student) {
     return foundCourses;
 }
 
+// hitta rätt avklarade hp till varje student
 function getStudentCourses (student) {
     
     let studentCourses = [];
@@ -95,7 +99,7 @@ function getStudentCourses (student) {
     return studentCourses;
 }
 
-// dark mode
+// dark-mode
 
 let themeSwitch = document.querySelector('input');
 
