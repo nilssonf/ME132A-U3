@@ -101,5 +101,10 @@ let themeSwitch = document.querySelector('input');
 
 themeSwitch.addEventListener('change', () => {
     let wrapper = document.getElementById("wrapper");
+    let results = document.getElementById("results");
+    let body = document.querySelector("body");
     wrapper.classList.toggle('dark-theme');
+    results.classList.toggle("dark-theme");
+    body.classList.toggle("dark-theme");
+
 });
